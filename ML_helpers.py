@@ -20,18 +20,24 @@ print(MSE(arr, theta, thetanaught=1, squared=1))
 #lil bit of functional programming for you <3
 #inputs is the x,y entries that you have
 #gradient func takes three parameters: x, y (from inputs), and theta
-def gradient_step(theta, gradient_func, inputs, step_size):
+def gradient_step(theta, step_size, gradient_func, inputs):
     total = 0
-    trials = numpy.array(len(inputs))
+    trials = numpy.ones(len(inputs))
     index = 0
     for entry in inputs:
         trials[index] = gradient_func(entry[0][0], entry[1], theta)
         index += 1
     for trial in trials:
         total += trial
-    total /= len(trials)
+    total /= len(trials) #average
     total *= step_size
     return total
+
+def sample_gradient(x, y, theta):
+    return theta * x * x - theta * x * y
+
+print(gradient_step(3, 0.2, sample_gradient, arr))
+
 
 #random stochastic gradient step
 def rand_stoch_step(theta, gradient_func, inputs, step_size):
@@ -41,8 +47,6 @@ def rand_stoch_step(theta, gradient_func, inputs, step_size):
     val = gradient_func(inputs[trial][0][0], inputs[trial][1], theta)
     val *= step_size
     return val
-
-
 
 
 
