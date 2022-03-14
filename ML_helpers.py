@@ -49,6 +49,17 @@ def rand_stoch_step(theta, gradient_func, inputs, step_size):
     return val
 
 
+def make_col(length):
+    try:
+        vectr = numpy.zeros(shape=(length, 1)) #column vector
+        return vectr
+    except:
+        print("wrong input type") 
+
+theta = -1/9
+step = 0.2
+data = [[[1,1]],[[2,2]]]
+
 
 
 
