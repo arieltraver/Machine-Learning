@@ -32,3 +32,12 @@ class Linear(Module):
         self.W = self.W - sub         # Your code
         sub0 = lrate * self.dLdW0
         self.W0 = self.W0 - sub0      # Your code
+
+class Tanh(Module):            # Layer activation
+    def forward(self, Z):
+        self.A = np.tanh(Z)            # Your code
+        return self.A
+
+    def backward(self, dLdA):    # Uses stored self.A
+        deriv = np.ones(self.A.shape) - self.A * self.A #gives dA/dZ = 1 - A(z)^2
+        return dLdA * deriv #dLdZ = dLdA * dAdZ
