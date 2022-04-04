@@ -41,3 +41,12 @@ class Tanh(Module):            # Layer activation
     def backward(self, dLdA):    # Uses stored self.A
         deriv = np.ones(self.A.shape) - self.A * self.A #gives dA/dZ = 1 - A(z)^2
         return dLdA * deriv #dLdZ = dLdA * dAdZ
+
+class ReLU(Module):              # Layer activation
+    def forward(self, Z):
+        self.A = np.maximum(0, Z)            # Your code
+        return self.A
+
+    def backward(self, dLdA): # uses stored self.A
+        
+        return dLdA             # Your code: return dLdZ
