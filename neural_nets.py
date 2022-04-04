@@ -19,3 +19,6 @@ def drelu_dz(z):
 
 print(relu(numpy.array([[-2],[3],[0]])))
 print(softmax(numpy.array([[1],[1],[1]])))
+
+
+
